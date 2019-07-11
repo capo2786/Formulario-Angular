@@ -1,18 +1,19 @@
 <div class="form-container">
-  <h1>Contactos</h1>
+  <h1>FORMULARIO</h1>
   <form [formGroup]="contactForm" (ngSubmit)="onSaveForm()">
     <input type="text" formControlName="name" placeholder="Nombre">
-    <div class="alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+    <div class="alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)&& name.invalid">
+     
       <div class="container-error-message" *ngIf="name.errors.required">
         Nombre es requerido
       </div>
       <div class="container-error-message" *ngIf="name.errors.minlength">
         El nombre debe tener al menos 5 caracteres.
       </div>
+    
     </div>
 
     <input type="text" formControlName="email" placeholder="Email">
-
     <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
       <div class="container-error-message" *ngIf="email.errors.required">
         Email es requerido
@@ -22,6 +23,19 @@
       </div>
       <div class="container-error-message" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.pattern">
         El valor tiene que ser una dirección de email válida.
+      </div>
+    </div>
+
+    <input type="password" formControlName="password" placeholder="Password">
+    <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+      <div class="container-error-message" *ngIf="password.errors.required">
+        Password es requerido
+      </div>
+      <div class="container-error-message" *ngIf="password.errors.minlength">
+        El Password debe tener al menos 5 caracteres.
+      </div>
+      <div class="container-error-message" *ngIf="(password.dirty || password.touched) && password.invalid && password.errors.pattern">
+         Debe tener al menos una letra mayuscula 
       </div>
     </div>
     <textarea formControlName="message" placeholder="Mensaje"></textarea>
